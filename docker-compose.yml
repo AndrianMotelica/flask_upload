@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  flask-service:
+    container_name: flask
+    build: ./flask
+    volumes: 
+      - ./flask/app:/var/www/flask
+    restart: unless-stopped
+    ports: 
+      - "5001:80"      
+
+  ui-service:
+    container_name: ui
+    build: ./ui
+    volumes: 
+      - ./ui/clientapp:/var/www/ui
+    restart: unless-stopped
+    ports: 
+      - "5002:80"
