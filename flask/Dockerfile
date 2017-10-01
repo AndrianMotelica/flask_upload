@@ -25,4 +25,8 @@ COPY FlaskApp.conf /etc/apache2/sites-available/FlaskApp.conf
 RUN a2ensite FlaskApp && \
 	service apache2 restart 
 
-CMD ["sh", "-c", "tail -f /dev/null"]
+# manage runable command file
+COPY run.sh /opt/run.sh
+RUN chmod +x /opt/run.sh
+
+CMD ["/opt/run.sh"]
