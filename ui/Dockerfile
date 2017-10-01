@@ -1,7 +1,7 @@
 FROM debian:jessie
 
 RUN apt-get update && \
-	apt-get install -y vim apache2
+	apt-get install -y vim npm bower apache2
 RUN a2enmod headers rewrite && \
 	service apache2 restart
 
