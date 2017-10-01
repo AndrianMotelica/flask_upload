@@ -1,1 +1,5 @@
-*!.gitignore
+# Ignore everything
+*
+
+# But not thei file
+!.gitignore
