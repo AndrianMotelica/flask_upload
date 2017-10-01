@@ -9,22 +9,22 @@ api = Api(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 class HelloWorld(Resource):
-	"""Defines base app endpoints."""	
+    """Defines base app endpoints."""	
     def get(self):
-    	 """Return a 'hello world' message 'http://localhost/' via GET."""
+        """Return a 'hello world' message 'http://localhost/' via GET."""
         return {'hello': 'world'}
 
 class File(Resource):
-	"""Defines file uploader endpoints."""
-	def post(self):
-		"""
-		File upload endpoint 'http://localhost/upload' via POST. 
-		Returns uploaded file name on success
-		"""
-		file = request.files['file'] 
-		filename = file.filename 
-		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-		return {'message': filename + ' successfully saved !'}
+    """Defines file uploader endpoints."""
+    def post(self):
+        """
+        File upload endpoint 'http://localhost/upload' via POST. 
+        Returns uploaded file name on success
+        """
+        file = request.files['file'] 
+        filename = file.filename 
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return {'message': filename + ' successfully saved !'}
 
 api.add_resource(HelloWorld, '/')
 api.add_resource(File, '/upload')
